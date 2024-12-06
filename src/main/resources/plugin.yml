@@ -1,0 +1,4 @@
+name: ZibadaCore
+version: '0.1'
+main: com.zibada.zibadaCore.ZibadaCore
+api-version: '1.21'
