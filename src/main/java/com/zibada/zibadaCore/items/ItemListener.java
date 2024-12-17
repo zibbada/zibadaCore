@@ -43,7 +43,6 @@ public class ItemListener implements Listener {
 
     @EventHandler
     public void onPlayerInteract(InventoryInteractEvent e) {
-
     }
 
 

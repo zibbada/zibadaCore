@@ -1,11 +1,8 @@
 package com.zibada.zibadaCore.items;
 
-import com.zibada.zibadaCore.BaseManager;
-import org.bukkit.entity.Item;
 import org.bukkit.inventory.ItemStack;
 import org.bukkit.inventory.meta.ItemMeta;
 import org.bukkit.persistence.PersistentDataContainer;
-import org.bukkit.persistence.PersistentDataHolder;
 import org.bukkit.persistence.PersistentDataType;
 
 public class BaseItem {

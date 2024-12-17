@@ -8,6 +8,7 @@ import org.bukkit.persistence.PersistentDataType;
 import org.bukkit.plugin.Plugin;
 
 import java.util.HashMap;
+import java.util.List;
 
 public class ItemRegistry {
 
@@ -21,6 +22,12 @@ public class ItemRegistry {
 
     public static void register(BaseItem i){
         ITEM_MAP.put(i.getId(),i);
+    }
+
+    public static void registerList(List<BaseItem> l){
+        for(BaseItem i : l){
+            ITEM_MAP.put(i.getId(),i);
+        }
     }
 
     public static BaseItem getItem(String id){
