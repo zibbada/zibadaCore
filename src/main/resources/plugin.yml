@@ -4,3 +4,5 @@ main: com.zibada.zibadaCore.ZibadaCore
 api-version: '1.21'
 commands:
   agive:
+  test:
+  d:

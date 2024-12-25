@@ -1,5 +1,6 @@
-package com.zibada.zibadaCore.items;
+package com.zibada.zibadaCore.items.types;
 
+import com.zibada.zibadaCore.items.ItemRegistry;
 import org.bukkit.inventory.ItemStack;
 import org.bukkit.inventory.meta.ItemMeta;
 import org.bukkit.persistence.PersistentDataContainer;
@@ -7,7 +8,7 @@ import org.bukkit.persistence.PersistentDataType;
 
 public class BaseItem {
     private final String id;
-    private final ItemStack baseItemStack;
+    protected final ItemStack baseItemStack;
 
     public BaseItem(String id, ItemStack baseItemStack) {
 

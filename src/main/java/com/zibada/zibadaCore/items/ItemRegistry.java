@@ -1,5 +1,6 @@
 package com.zibada.zibadaCore.items;
 
+import com.zibada.zibadaCore.items.types.BaseItem;
 import org.bukkit.NamespacedKey;
 import org.bukkit.inventory.ItemStack;
 import org.bukkit.inventory.meta.ItemMeta;
@@ -13,7 +14,7 @@ import java.util.List;
 public class ItemRegistry {
 
     public static NamespacedKey KEY;
-    private static final HashMap<String,BaseItem> ITEM_MAP = new HashMap<>();
+    private static final HashMap<String, BaseItem> ITEM_MAP = new HashMap<>();
 
 
     public static void initialize(Plugin plugin){

@@ -1,4 +1,4 @@
-package com.zibada.zibadaCore.items;
+package com.zibada.zibadaCore.items.types;
 
 import org.bukkit.event.inventory.InventoryDragEvent;
 import org.bukkit.event.inventory.InventoryInteractEvent;

@@ -1,5 +1,7 @@
 package com.zibada.zibadaCore.items;
 
+import com.zibada.zibadaCore.items.types.BaseItem;
+import com.zibada.zibadaCore.items.types.InteractableItem;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
 import org.bukkit.event.inventory.InventoryInteractEvent;
@@ -15,7 +17,7 @@ public class ItemListener implements Listener {
     public void onPlayerInteract(PlayerInteractEvent e) {
         ItemStack item = e.getItem();
         BaseItem CItem = ItemRegistry.getItem(item);
-        if(CItem instanceof InteractableItem ){
+        if(CItem instanceof InteractableItem){
             InteractableItem interactableItem = (InteractableItem) CItem;
             interactableItem.onInteract(e);
         }
