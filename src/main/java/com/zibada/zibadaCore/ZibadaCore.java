@@ -1,7 +1,9 @@
 package com.zibada.zibadaCore;
 
-import com.zibada.zibadaCore.commands.Deserialize;
+import com.zibada.zibadaCore.blocks.BlockListener;
+import com.zibada.zibadaCore.commands.GetDataCommand;
 import com.zibada.zibadaCore.commands.GiveCommand;
+import com.zibada.zibadaCore.commands.ReflectCommand;
 import com.zibada.zibadaCore.commands.TestCommand;
 import com.zibada.zibadaCore.items.*;
 import com.zibada.zibadaCore.items.types.BaseItem;
@@ -21,6 +23,7 @@ public final class ZibadaCore extends JavaPlugin {
     public void onEnable() {
         // Plugin startup logic
         getServer().getPluginManager().registerEvents(new ItemListener(), this);
+        getServer().getPluginManager().registerEvents(new BlockListener(), this);
         ItemRegistry.initialize(this);
         ItemRegistry.register(new BaseItem("base_item", new ItemStack(Material.BARRIER)));
 
@@ -40,7 +43,8 @@ public final class ZibadaCore extends JavaPlugin {
 
         getCommand("agive").setExecutor(new GiveCommand());
         getCommand("test").setExecutor(new TestCommand(this));
-        getCommand("d").setExecutor(new Deserialize(this));
+        getCommand("reflect").setExecutor(new ReflectCommand());
+        getCommand("getData").setExecutor(new GetDataCommand(this));
     }
 
     @Override
