@@ -16,11 +16,15 @@ import org.yaml.snakeyaml.Yaml;
 import java.io.*;
 import java.util.List;
 import java.util.Map;
+import java.util.zip.ZipInputStream;
 
 public final class ZibadaCore extends JavaPlugin {
 
+    private static ZibadaCore instance;
+
     @Override
     public void onEnable() {
+        instance = this;
         // Plugin startup logic
         getServer().getPluginManager().registerEvents(new ItemListener(), this);
         getServer().getPluginManager().registerEvents(new BlockListener(), this);
@@ -50,5 +54,9 @@ public final class ZibadaCore extends JavaPlugin {
     @Override
     public void onDisable() {
         // Plugin shutdown logic
+    }
+
+    public static ZibadaCore getInstance(){
+        return instance;
     }
 }

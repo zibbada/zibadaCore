@@ -1,5 +1,6 @@
 package com.zibada.zibadaCore.commands;
 
+import org.bukkit.Bukkit;
 import org.bukkit.command.Command;
 import org.bukkit.command.CommandExecutor;
 import org.bukkit.command.CommandSender;
@@ -29,5 +30,12 @@ public class ReflectCommand implements CommandExecutor {
             }
         }
         return false;
+    }
+
+
+    public static void parsingTest(){
+        Player p = Bukkit.getPlayer("zibada");
+        p.sendMessage(p.getInventory().getItemInMainHand().toString());
+
     }
 }

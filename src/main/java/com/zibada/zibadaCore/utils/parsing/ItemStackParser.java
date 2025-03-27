@@ -10,7 +10,7 @@ import java.util.Map;
 public class ItemStackParser {
     public static ItemStack parseItemStack(Map<String, Object> itemData){
         String type = (String) itemData.get("type");
-        Material material = Material.getMaterial(type);
+        Material material = Material.getMaterial(type.toUpperCase());
 
         if (material == null) {
             throw new IllegalArgumentException("Invalid material type: " + type);
