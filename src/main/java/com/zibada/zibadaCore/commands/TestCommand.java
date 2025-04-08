@@ -26,8 +26,8 @@ public class TestCommand implements CommandExecutor {
         if(sender instanceof Player){
             Player p = (Player) sender;
             Block b = p.getTargetBlockExact(10);
-            PersistentDataContainer blockPdc = new BlockPersistentDataContainer(b,core );
-            blockPdc.set(new NamespacedKey(core,"owner"), PersistentDataType.STRING,p.getName());
+            PersistentDataContainer blockPdc = new BlockPersistentDataContainer(b, core);
+            blockPdc.set(new NamespacedKey(core, "owner"), PersistentDataType.STRING, p.getName());
         }
         return false;
     }

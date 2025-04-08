@@ -14,7 +14,7 @@ import org.jspecify.annotations.Nullable;
 import java.io.IOException;
 import java.util.Set;
 
-public class BlockPersistentDataContainer implements PersistentDataContainer{
+public class BlockPersistentDataContainer implements PersistentDataContainer {
     private final Block block;
     private final Chunk chunk;
     private PersistentDataContainer chunkPdc;
@@ -25,32 +25,32 @@ public class BlockPersistentDataContainer implements PersistentDataContainer{
     private final NamespacedKey blockKey;
 
 
-    public BlockPersistentDataContainer(Block block, Plugin plugin){
+    public BlockPersistentDataContainer(Block block, Plugin plugin) {
         this.block = block;
         this.chunk = block.getChunk();
         this.chunkPdc = this.chunk.getPersistentDataContainer();
 
-        this.chunkKey = new NamespacedKey(plugin,"blockData");
-        this.blockKey = generateBlockKey(plugin,this.block);
+        this.chunkKey = new NamespacedKey(plugin, "blockData");
+        this.blockKey = generateBlockKey(plugin, this.block);
 
         //Get/Create shared pdc for block data
-        if(chunkPdc.has(chunkKey,PersistentDataType.TAG_CONTAINER)){
-            blockDataPdc = chunkPdc.get(chunkKey,PersistentDataType.TAG_CONTAINER);
-        }else{
+        if (chunkPdc.has(chunkKey, PersistentDataType.TAG_CONTAINER)) {
+            blockDataPdc = chunkPdc.get(chunkKey, PersistentDataType.TAG_CONTAINER);
+        } else {
             blockDataPdc = chunkPdc.getAdapterContext().newPersistentDataContainer();
-            chunkPdc.set(chunkKey,PersistentDataType.TAG_CONTAINER,blockDataPdc);
+            chunkPdc.set(chunkKey, PersistentDataType.TAG_CONTAINER, blockDataPdc);
         }
 
         //Get/Create specific pdc
-        if(blockDataPdc.has(blockKey)){
-            blockPdc = blockDataPdc.get(blockKey,PersistentDataType.TAG_CONTAINER);
-        }else{
+        if (blockDataPdc.has(blockKey)) {
+            blockPdc = blockDataPdc.get(blockKey, PersistentDataType.TAG_CONTAINER);
+        } else {
             blockPdc = blockDataPdc.getAdapterContext().newPersistentDataContainer();
-            blockDataPdc.set(blockKey,PersistentDataType.TAG_CONTAINER,blockPdc);
+            blockDataPdc.set(blockKey, PersistentDataType.TAG_CONTAINER, blockPdc);
         }
     }
 
-    public static NamespacedKey generateBlockKey(Plugin plugin,Block block){
+    public static NamespacedKey generateBlockKey(Plugin plugin, Block block) {
         int x = Math.abs(block.getX() % 16);
         int y = block.getY();
         int z = Math.abs(block.getZ() % 16);
@@ -58,17 +58,17 @@ public class BlockPersistentDataContainer implements PersistentDataContainer{
         return new NamespacedKey(plugin, x + "_" + y + "_" + z);
     }
 
-    private void save(){
-        if(isEmpty()){
+    private void save() {
+        if (isEmpty()) {
             blockDataPdc.remove(blockKey);
         } else {
-            blockDataPdc.set(blockKey,PersistentDataType.TAG_CONTAINER,blockPdc);
+            blockDataPdc.set(blockKey, PersistentDataType.TAG_CONTAINER, blockPdc);
         }
 
-        if(blockDataPdc.isEmpty()){
+        if (blockDataPdc.isEmpty()) {
             chunkPdc.remove(chunkKey);
         } else {
-            chunkPdc.set(chunkKey,PersistentDataType.TAG_CONTAINER,blockDataPdc);
+            chunkPdc.set(chunkKey, PersistentDataType.TAG_CONTAINER, blockDataPdc);
         }
 
         chunk.setForceLoaded(true);
@@ -77,7 +77,7 @@ public class BlockPersistentDataContainer implements PersistentDataContainer{
 
     @Override
     public <P, C> void set(@NotNull NamespacedKey key, @NotNull PersistentDataType<P, C> type, @NotNull C value) {
-        blockPdc.set(key,type,value);
+        blockPdc.set(key, type, value);
         save();
     }
 
@@ -89,12 +89,12 @@ public class BlockPersistentDataContainer implements PersistentDataContainer{
 
     @Override
     public void readFromBytes(byte @NotNull [] bytes, boolean clear) throws IOException {
-        blockPdc.readFromBytes(bytes,clear);
+        blockPdc.readFromBytes(bytes, clear);
     }
 
     @Override
     public <P, C> boolean has(NamespacedKey key, PersistentDataType<P, C> type) {
-        return blockPdc.has(key,type);
+        return blockPdc.has(key, type);
     }
 
     @Override
@@ -104,12 +104,12 @@ public class BlockPersistentDataContainer implements PersistentDataContainer{
 
     @Override
     public <P, C> @Nullable C get(NamespacedKey key, PersistentDataType<P, C> type) {
-        return blockPdc.get(key,type);
+        return blockPdc.get(key, type);
     }
 
     @Override
     public <P, C> C getOrDefault(NamespacedKey key, PersistentDataType<P, C> type, C defaultValue) {
-        return blockPdc.getOrDefault(key,type,defaultValue);
+        return blockPdc.getOrDefault(key, type, defaultValue);
     }
 
     @Override
@@ -124,7 +124,7 @@ public class BlockPersistentDataContainer implements PersistentDataContainer{
 
     @Override
     public void copyTo(PersistentDataContainer other, boolean replace) {
-        blockPdc.copyTo(other,replace);
+        blockPdc.copyTo(other, replace);
     }
 
     @Override

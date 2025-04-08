@@ -17,7 +17,7 @@ public class ItemListener implements Listener {
     public void onPlayerInteract(PlayerInteractEvent e) {
         ItemStack item = e.getItem();
         BaseItem CItem = ItemRegistry.getItem(item);
-        if(CItem instanceof InteractableItem){
+        if (CItem instanceof InteractableItem) {
             InteractableItem interactableItem = (InteractableItem) CItem;
             interactableItem.onInteract(e);
         }
@@ -27,7 +27,7 @@ public class ItemListener implements Listener {
     public void inPlayerDrop(PlayerDropItemEvent e) {
         ItemStack item = e.getItemDrop().getItemStack();
         BaseItem CItem = ItemRegistry.getItem(item);
-        if(CItem instanceof InteractableItem ){
+        if (CItem instanceof InteractableItem) {
             InteractableItem interactableItem = (InteractableItem) CItem;
             interactableItem.onDrop(e);
         }
@@ -37,7 +37,7 @@ public class ItemListener implements Listener {
     public void onPlayerSwapHands(PlayerSwapHandItemsEvent e) {
         ItemStack item = e.getMainHandItem();
         BaseItem CItem = ItemRegistry.getItem(item);
-        if(CItem instanceof InteractableItem ){
+        if (CItem instanceof InteractableItem) {
             InteractableItem interactableItem = (InteractableItem) CItem;
             interactableItem.onSwapHands(e);
         }

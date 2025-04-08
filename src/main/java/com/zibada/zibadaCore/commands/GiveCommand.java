@@ -18,7 +18,7 @@ import org.jetbrains.annotations.NotNull;
 public class GiveCommand implements CommandExecutor {
     @Override
     public boolean onCommand(@NotNull CommandSender sender, @NotNull Command command, @NotNull String label, @NotNull String[] args) {
-        if(sender instanceof Player && sender.isOp()){
+        if (sender instanceof Player && sender.isOp()) {
             ItemStack is = ItemRegistry.getItem(args[0]).getBaseItemStack();
             ((Player) sender).getInventory().addItem(is);
         }

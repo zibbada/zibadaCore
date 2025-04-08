@@ -20,15 +20,17 @@ public class BaseItem {
     public String getId() {
         return id;
     }
-    public ItemStack getBaseItemStack(){
+
+    public ItemStack getBaseItemStack() {
         return baseItemStack.clone();
-    };
+    }
 
 
-    public void attachId(ItemStack itemStack){
+
+    public void attachId(ItemStack itemStack) {
         ItemMeta itemMeta = itemStack.getItemMeta();
         PersistentDataContainer pdc = itemMeta.getPersistentDataContainer();
-        pdc.set(ItemRegistry.KEY, PersistentDataType.STRING,id);
+        pdc.set(ItemRegistry.KEY, PersistentDataType.STRING, id);
         itemStack.setItemMeta(itemMeta);
     }
 

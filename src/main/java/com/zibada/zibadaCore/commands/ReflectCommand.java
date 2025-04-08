@@ -13,12 +13,12 @@ import java.lang.reflect.Method;
 public class ReflectCommand implements CommandExecutor {
     @Override
     public boolean onCommand(@NotNull CommandSender sender, @NotNull Command command, @NotNull String label, @NotNull String[] args) {
-        if(sender instanceof Player){
+        if (sender instanceof Player) {
             Player p = (Player) sender;
             try {
                 Class<?> clazz = Class.forName(args[0]);
                 Method method = clazz.getMethod(args[1]);
-                method.invoke(null,null);
+                method.invoke(null, null);
             } catch (ClassNotFoundException e) {
                 throw new RuntimeException(e);
             } catch (NoSuchMethodException e) {
@@ -33,7 +33,7 @@ public class ReflectCommand implements CommandExecutor {
     }
 
 
-    public static void parsingTest(){
+    public static void parsingTest() {
         Player p = Bukkit.getPlayer("zibada");
         p.sendMessage(p.getInventory().getItemInMainHand().toString());
 

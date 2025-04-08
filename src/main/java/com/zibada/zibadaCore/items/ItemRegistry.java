@@ -17,25 +17,25 @@ public class ItemRegistry {
     private static final HashMap<String, BaseItem> ITEM_MAP = new HashMap<>();
 
 
-    public static void initialize(Plugin plugin){
-        KEY = new NamespacedKey(plugin,"custom_item_id");
+    public static void initialize(Plugin plugin) {
+        KEY = new NamespacedKey(plugin, "custom_item_id");
     }
 
-    public static void register(BaseItem i){
-        ITEM_MAP.put(i.getId(),i);
+    public static void register(BaseItem i) {
+        ITEM_MAP.put(i.getId(), i);
     }
 
-    public static void registerList(List<BaseItem> l){
-        for(BaseItem i : l){
-            ITEM_MAP.put(i.getId(),i);
+    public static void registerList(List<BaseItem> l) {
+        for (BaseItem i : l) {
+            ITEM_MAP.put(i.getId(), i);
         }
     }
 
-    public static BaseItem getItem(String id){
+    public static BaseItem getItem(String id) {
         return ITEM_MAP.get(id);
     }
 
-    public static BaseItem getItem(ItemStack itemStack){
+    public static BaseItem getItem(ItemStack itemStack) {
         if (itemStack == null || !itemStack.hasItemMeta()) return null;
         ItemMeta meta = itemStack.getItemMeta();
         if (meta == null) return null;
@@ -47,7 +47,7 @@ public class ItemRegistry {
         return null;
     }
 
-    public static boolean isCustomItem(ItemStack itemStack){
+    public static boolean isCustomItem(ItemStack itemStack) {
         if (itemStack == null || !itemStack.hasItemMeta()) return false;
         ItemMeta meta = itemStack.getItemMeta();
         if (meta == null) return false;

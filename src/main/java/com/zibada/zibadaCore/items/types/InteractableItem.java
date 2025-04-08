@@ -12,10 +12,14 @@ public abstract class InteractableItem extends BaseItem {
         super(id, baseItemStack);
     }
 
-    public abstract void onInteract (PlayerInteractEvent e);
-    public abstract void onDrop (PlayerDropItemEvent e);
+    public abstract void onInteract(PlayerInteractEvent e);
+
+    public abstract void onDrop(PlayerDropItemEvent e);
+
     public abstract void onSwapHands(PlayerSwapHandItemsEvent e);
-    public abstract void onInventoryInteract (InventoryInteractEvent e);
-    public abstract void onInventoryInteract (InventoryDragEvent e);
+
+    public abstract void onInventoryInteract(InventoryInteractEvent e);
+
+    public abstract void onInventoryInteract(InventoryDragEvent e);
 
 }

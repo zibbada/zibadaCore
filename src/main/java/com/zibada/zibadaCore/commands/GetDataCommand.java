@@ -14,12 +14,14 @@ import org.jetbrains.annotations.NotNull;
 
 public class GetDataCommand implements CommandExecutor {
     Plugin core;
-    public GetDataCommand (Plugin core){
-        this.core=core;
+
+    public GetDataCommand(Plugin core) {
+        this.core = core;
     }
+
     @Override
     public boolean onCommand(@NotNull CommandSender sender, @NotNull Command command, @NotNull String label, @NotNull String[] args) {
-        if(sender instanceof Player){
+        if (sender instanceof Player) {
             Player player = (Player) sender;
             Chunk chunk = player.getChunk();
             PersistentDataContainer chunkPdc = chunk.getPersistentDataContainer();
